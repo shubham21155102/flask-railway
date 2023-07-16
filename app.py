@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request,redirect,url_for,jsonify
-import os
-
+import json
+from datetime import datetime
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -41,7 +41,5 @@ def displayall():
         c.execute("SELECT * FROM company")
         data = c.fetchall()
     return render_template("alldatas.html", data=data)
-
-
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True)
